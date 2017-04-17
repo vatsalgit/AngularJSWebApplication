@@ -1,0 +1,27 @@
+ <div ng-show="tab.isSet('favorite')">
+             
+       <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Profile Photo</th>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Favorite</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody ng-repeat='(key,favorite) in favorites'>
+          
+            <tr>
+              <td>{{$index+1}}</td>
+              <div><td><img ng-src="{{favorite.image}}" height="50px" width="50px"/></td></div>
+              <div><td>{{favorite.name}}</td></div>
+              <div><td>{{favorite.type}}</td></div>
+              <td ><button type="button" class="btn btn-default btn-lg" ng-click="removeFav(key)">  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> </button></td>
+              <td><button type="button" class="btn btn-default btn-lg" ng-click="getDetails(key)">  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> </button></td></div>
+            </tr>
+          
+          </tbody>
+        </table>
+        </div>

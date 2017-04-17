@@ -1,0 +1,42 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
+</head>
+
+<div class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+</div>
+
+<div class="alert alert-success" role="alert" style="display: none">Loading completed!</div>
+
+</html>
+
+<script type="text/javascript">
+var $progress = $('.progress');
+var $progressBar = $('.progress-bar');
+var $alert = $('.alert');
+
+
+function updateProgressBar(value)
+{
+	 $progressBar.css('width', value);
+}
+
+setTimeout(function() {
+    updateProgressBar('20%');
+    setTimeout(function() {
+        updateProgressBar('40%');
+        setTimeout(function() {
+            updateProgressBar('60%');
+            setTimeout(function() {
+                $progress.css('display', 'none');
+                $alert.css('display', 'block');
+            }, 500); // WAIT 5 milliseconds
+        }, 2000); // WAIT 2 seconds
+    }, 1000); // WAIT 1 seconds
+}, 1000); // WAIT 1 second
+
+</script>
+
+

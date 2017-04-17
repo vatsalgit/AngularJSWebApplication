@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+
+  <script src="test_app.js"></script>
+
+ </script>
+</head>
+
+<div class="container">
+    <section ng-app="app" ng-controller="TabController as tab">
+        <ul class="nav nav-pills nav-justified">
+            <li ng-class="{active:tab.isSet('user')}"><a href ng-click="tab.setTab('user')">Users</a></li>
+            <li ng-class="{active:tab.isSet('page')}"><a href ng-click="tab.setTab('page')">Pages</a></li>
+            <li ng-class="{active:tab.isSet('event')}"><a href ng-click="tab.setTab('event')">Events</a></li>
+            <li ng-class="{active:tab.isSet('place')}"><a href ng-click="tab.setTab('place')">Places</a></li>
+            <li ng-class="{active:tab.isSet('group')}"><a href ng-click="tab.setTab('group')">Groups</a></li>
+            <li ng-class="{active:tab.isSet('favorite')}"><a href ng-click="tab.setTab('favorite')">Favorites</a></li>
+        </ul>
+        
+        <div ng-show="tab.isSet('user')">
+             <h4>Users</h4>
+        </div>
+        <div ng-show="tab.isSet('page')">
+             <h4>Pages</h4>
+        </div>
+        <div ng-show="tab.isSet('event')">
+             <h4>Events</h4>
+        </div>
+        <div ng-show="tab.isSet('place')">
+             <h4>Places</h4>
+        </div>
+        <div ng-show="tab.isSet('group')">
+             <h4>Groups</h4>
+        </div>
+        <div ng-show="tab.isSet('favorite')">
+             <h4>Favorites</h4>
+        </div>
+    </section>
+</div>
+
+</html>
+

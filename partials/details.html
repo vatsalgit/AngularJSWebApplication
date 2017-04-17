@@ -1,0 +1,112 @@
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="animations.css" rel="stylesheet" type="text/css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   
+   <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+   <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular-route.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular-animate.js"></script>
+
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-6 col-sm-8 col-md-10">
+    	<button type="button" class="btn btn-default navbar-btn" ng-click="goBack()" style="margin-top: 3%">  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true">Back</span> </button></div>
+    
+    <!-- <div class="col-xs-6 col-sm-8 col-md-5"> -->
+
+    	<span class="pull-right">
+    	  <div class="btn-toolbar" style="margin-top: 3%;vertical-align: top;">	
+    		      
+          <div ng-show="isAlreadyFav(details.data.id)" style="display: inline;">
+            <button type="button" class="btn btn-default btn-lg" ng-click="toggleFav(details.data.id,details.data.picture.data.url,details.data.name,this)">  <span class="star glyphicon glyphicon-star" aria-hidden="true" ng-style="{'color':'yellow'}"></span> </button>
+          </div>
+
+          <div ng-show="!isAlreadyFav(details.data.id)" style="display: inline;">
+             <button type="button" class="btn btn-default btn-lg" ng-click="toggleFav(details.data.id,details.data.picture.data.url,details.data.name,this)">  <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span> </button>
+          </div>
+    
+      		<button type="button" class="btn btn-default btn-lg" ng-click="postBtn(details.data.picture.data.url,details.data.name)">
+      		<span><img src="http://cs-server.usc.edu:45678/hw/hw8/images/facebook.png" width="25px" height="21px"></span>
+        </button>	
+    	<!-- </div> -->
+  </div>
+</div>
+
+<br> <br>
+
+<div class="container-fluid">
+   <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6"> 
+                    	<div class="panel panel-default">
+							  <div class="panel-heading">Albums</div>
+							  <div class="panel-body">
+                    <div class="panel panel-warning">
+                      <div ng-hide="details.data.albums" class="panel-heading">No Albums</div></div>
+							  		<div ng-repeat='album in details.data.albums.data'> 
+                    <div class="panel panel-default">
+							  			<div class="panel-heading"><a ng-click="toggleAlbums(album.name)">{{album.name}}</a></div>
+							  			<br>
+                      <div ng-show="update($index)"></div>
+							  			<div class="slide" ng-show="album.name==zalbums.shown" ng-hide="!first.data" ng-repeat="photo in album.photos.data"> 
+                        <img ng-src="{{photo.images[0].source}}" width="80%" height="40%"> 
+							  			</div>
+                    </div>
+
+							  		 </div>
+							  </div>
+						 </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+							  <div class="panel-heading">Posts</div>
+							  <div class="panel-body">
+                      <div class="panel panel-warning">
+                      <div ng-hide="details.data.posts" class="panel-heading">No Posts</div></div>
+							  	 <div ng-repeat="post in details.data.posts.data">
+                      <div class="panel panel-default">
+
+                          <div class="panel-body">
+                             <div style="display:inline-block;vertical-align: top"> 
+                                <img ng-src="{{details.data.picture.data.url}}" height="40px" width="40px">
+                             </div>
+                             <div style="display: inline-block;"> <b>{{details.data.name}} </b> <br> 
+                                 {{DateTimeSplit(post.created_time,0)}} {{TimeSplit(DateTimeSplit(post.created_time,1))}} 
+                             </div>
+                            <br><br>
+
+                              <div>{{post.message}} </div> 
+
+                          </div>
+                        </div>
+							  	 </div>
+							  </div>
+						</div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script type="text/javascript">
+  function ShowPhotos(name)
+    {
+          var obj = document.getElementById(name);
+          if(obj.style.display == "block")
+                  obj.style.display = "none";
+          else
+                  obj.style.display = "block";
+
+    };
+</script>
+</html>
+<!-- {{details}}  -->
+
+ 

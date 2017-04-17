@@ -1,0 +1,40 @@
+   <div>
+            
+       <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Profile Photo</th>
+              <th>Name</th>
+              <th>Favorite</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody ng-repeat="result in results_place.data.data">
+          
+            <tr>
+              <td>{{$index+1}}</td>
+              <div><td><img ng-src="{{result.picture.data.url}}" height="50px" width="50px"/></td></div>
+              <div><td>{{result.name}}</td></div>
+
+              <td>
+                
+              <div ng-show="isAlreadyFav(result.id)">
+                <button type="button" class="btn btn-default btn-lg" ng-click="toggleFav(result.id,result.picture.data.url,result.name,this)">  <span class="star glyphicon glyphicon-star" aria-hidden="true" ng-style="{'color':'yellow'}"></span> </button>
+              </div>
+
+              <div ng-show="!isAlreadyFav(result.id)">
+                 <button type="button" class="btn btn-default btn-lg" ng-click="toggleFav(result.id,result.picture.data.url,result.name,this)">  <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span> </button>
+              </div>
+              </td>
+              
+              <td><button type="button" class="btn btn-default btn-lg" ng-click="getDetails(result.id)">  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> </button></td></div>
+            </tr>
+          
+          </tbody>
+        </table>
+        </div>
+ <ul class="pager">
+          <li><a href ng-show="results_place.data.paging.previous" ng-click="getPrev(results_place.data.paging.previous)">Previous</a></li>
+          <li><a href ng-show="results_place.data.paging.next" ng-click="getNext(results_place.data.paging.next)">Next</a></li>
+        </ul>

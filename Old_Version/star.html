@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='sampleApp'>
+<head>
+  <title>Star</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="animations.css" rel="stylesheet" type="text/css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   
+   <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+   <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular-route.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular-animate.js"></script>
+
+   <script src="ctrls.js"></script>
+
+   <script src="toggle.js"></script>
+
+ 
+
+</head>
+
+<body ng-controller="mainCtrl">
+
+<button type="button" class="btn btn-default btn-lg" id="refresh" ng-click="toggleFav()">
+   <span class="glyphicon glyphicon-star" id='hello' ng-style="val==1 ? {'color' : 'yellow'} : {'color' : 'black'}"></span>
+</button>
+
+<!-- <script type="text/javascript">
+  var flag = 1;
+  $('#refresh').click(function(){
+    if (flag==1)
+    {
+       $('#hello').css({'color':'yellow'});
+       flag=0;
+    }
+    else
+    {
+      $('#hello').css({'color':'black'});
+      flag=1;
+    }
+
+});
+
+</script> -->
